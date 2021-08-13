@@ -17,17 +17,33 @@ namespace MoodAnalyzerProblem
         }
         public string AnalyseMood()
         {
+            if (msg == null)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD, "Mood Should not be Null");
+            }
             try
             {
-                string message = msg.ToLower();
-                if (message.Contains("sad"))
-                    return "Sad";
+                if (msg.Length==0)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "Mood Should not be Empty");
+                }
                 else
-                    return "Happy";
+                {
+                    string message = msg.ToLower();
+                    if (message.Contains("sad"))
+                    {
+                        return "Sad";
+                    }
+                    else
+                    {
+                        return "Happy";
+                    }
+                }
+                
             }
             catch
             {
-                return "Happy";
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "Mood Should not be Empty");
             }
         }
     }

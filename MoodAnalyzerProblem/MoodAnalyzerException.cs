@@ -6,10 +6,10 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnalyzerException : Exception
     {
-        ExceptionType type;
+        public readonly ExceptionType type;
         public enum ExceptionType
         {
-            NULL_MOOD, EMPTY_MOOD
+            NULL_MOOD, EMPTY_MOOD, NO_SUCHCLASS, NO_SUCH_CONSTRUCTOR
         }
         public MoodAnalyzerException(ExceptionType type, string message) : base(message)
         {

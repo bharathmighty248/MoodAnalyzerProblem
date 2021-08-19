@@ -197,5 +197,38 @@ namespace MoodAnalyzerTest
             string actual = MoodAnalyzerReflector.InvokeAnalyseMood("I am happy", "Mood");
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// TestCase 7.1
+        /// </summary>
+        [Test]
+        public void GivenSetMoodDynamically_ShouldReturnHappy()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerReflector.SetFieldDynamic("Happy", "message");
+            expected.Equals(actual);
+        }
+
+        /// <summary>
+        /// TestCase 7.2
+        /// </summary>
+        [Test]
+        public void GivenFieldName_WhenImproper_ShouldReturnMoodAnaysisException()
+        {
+            string expected = "Field not found";
+            string actual = MoodAnalyzerReflector.SetFieldDynamic("Happy", "message");
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// TestCase 7.3
+        /// </summary>
+        [Test]
+        public void ChangeMeassageDynamically_ShouldReturnMessage()
+        {
+            string expected = "Mood should not be null";
+            string actual = MoodAnalyzerReflector.SetFieldDynamic(null, "message");
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

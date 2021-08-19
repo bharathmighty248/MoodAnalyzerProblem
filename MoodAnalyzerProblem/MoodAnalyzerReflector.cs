@@ -86,5 +86,30 @@ namespace MoodAnalyzerProblem
                 return e.Message;
             }
         }
+
+        public static string SetFieldDynamic(string message, string fieldName)
+        {
+            try
+            {
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+                Type type = typeof(MoodAnalyzer);
+                FieldInfo fieldInfo = type.GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
+                if (fieldInfo == null)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_FIELD, "Field not found");
+
+                }
+                if (message == null)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD, "Mood should not be null");
+                }
+                fieldInfo.SetValue(moodAnalyzer, message);
+                return moodAnalyzer.msg;
+            }
+            catch (MoodAnalyzerException e)
+            {
+                return e.Message;
+            }
+        }
     }
 }

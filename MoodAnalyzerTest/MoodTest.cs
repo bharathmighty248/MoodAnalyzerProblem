@@ -108,7 +108,7 @@ namespace MoodAnalyzerTest
             string expected = "Class not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzerProblem.Mood", "Mood");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzerProblem.Mood", "MoodAnalyzer");
             }
             catch(MoodAnalyzerException e)
             {
@@ -140,7 +140,7 @@ namespace MoodAnalyzerTest
         public void GivenMoodAnalyserParameterizedConstructor_ShouldReturnObject()
         {
             object expected = new MoodAnalyzer("Parameter Constructor");
-            object actual = MoodAnalyzerFactory.CreateMoodAnalyzerParameterizedConstructor("MoodAnalyserProblem.MoodAnalyser", "MoodAnalyser", "Parameter Constructor");
+            object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", "Parameter Constructor");
             expected.Equals(actual);
         }
         /// <summary>
@@ -152,7 +152,7 @@ namespace MoodAnalyzerTest
             string expected = "Class not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyzerParameterizedConstructor("MoodAnalyser.MoodAnalyser", "MoodAnalyser", "Parameter Constructor");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzer.MoodAnalyzer", "MoodAnalyzer", "Parameter Constructor");
             }
             catch (MoodAnalyzerException e)
             {
@@ -168,7 +168,7 @@ namespace MoodAnalyzerTest
             string expected = "Constructor not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyzerParameterizedConstructor("MoodAnalyserProblem.MoodAnalyser", "MoodAnalyser", "Parameter Constructor");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", "Parameter Constructor");
             }
             catch (MoodAnalyzerException e)
             {
